@@ -13,8 +13,8 @@ module.exports = {
       backgroundColor:{
         "main-bg":"rgb(226 232 240)",
         "second-bg":"#fff",
-        "main-dark-bg":"rgb(59 7 100)",
-        "second-dark-bg":"rgb(88 28 135)",
+        "main-dark-bg":"#1d1a2c",
+        "second-dark-bg":"#282637",
       }
     },
   },

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useToDos from "../hooks/useToDos"
+import ToDo from "../components/ToDo";
 
 
 const ToDoPage = () => {
@@ -23,7 +24,7 @@ const ToDoPage = () => {
       },
     ];
 
-    newContainers[0].toDos = toDos.filter((todo)=> !todo.checked )
+    newContainers[0].toDos = toDos.filter((todo)=> !todo.checked && !todo.archivedAt )
     newContainers[1].toDos = toDos.filter((todo)=> todo.checked )
     newContainers[2].toDos = toDos.filter((todo)=> !todo.checked && todo.archivedAt )
 
@@ -31,16 +32,16 @@ const ToDoPage = () => {
   },[toDos])
 
   return (
-    <div className="flex items-center justify-center md:flex-row flex-col gap-3 p-4 md:p-10">
+    <div className="flex items-start justify-center md:flex-row flex-col gap-3 p-4 md:p-10">
       {containers.map((container)=>(
           <div className="w-full flex items-center justify-center flex-col gap-1">
             <h3 className="text-2xl font-bold">
               {container.title}
             </h3>
-            <div style={{backgroundColor:container.bg}} className="border-2 border-second-color rounded-md min-h-[300px] w-full flex items-center flex-col p-4">
+            <div style={{backgroundColor:container.bg}} className="border-2 border-second-color rounded-md min-h-[300px] max-h-[500px] overflow-y-auto w-full flex items-center flex-col p-4 gap-2.5">
               {
                 container.toDos.map((todo)=>(
-                  todo.title
+                  <ToDo todo={todo} />
                 ))
               }
             </div>

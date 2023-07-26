@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -14,14 +14,19 @@ import Textarea from "../inputs/Textarea";
 
 const ToDoModal = () => {
   const { clicked, closeAllClicked } = useClicked();
-  const { toDos, addToDo } = useToDos();
+  const { toDos, addToDo, updateToDo } = useToDos();
   const [isLoading, setIsLoading] = useState(false);
+  const [update, setUpdate] = useState(null);
+  const titleLabel = useMemo(()=> update? "Update To-Do":"New To-Do",[update])
+  const actionLabel = useMemo(()=> update? "Update it":"Add it",[update])
 
+  
+  
   const schema = yup
-    .object({
-      title: yup.string().required().min(3).max(60),
-      desc: yup.string().required().min(10).max(300),
-    })
+  .object({
+    title: yup.string().required().min(3).max(60),
+    desc: yup.string().required().min(10).max(300),
+  })
     .required();
 
   const {
@@ -33,6 +38,16 @@ const ToDoModal = () => {
     resolver: yupResolver(schema),
   });
 
+  useEffect(()=>{
+    if(!clicked.includes("+")) return
+
+    const currentToDoId = clicked.split("+")[1]
+    const currentToDo = toDos.find((todo)=> todo.id === +currentToDoId)
+    setUpdate(currentToDo)
+    setValue("title",currentToDo.title)
+    setValue("desc",currentToDo.desc)
+  },[clicked])
+  
   const onSubmit = (data) => {
     setIsLoading(true);
 
@@ -44,7 +59,12 @@ const ToDoModal = () => {
         finishedAt:null,
         archivedAt:null,
     }
-    addToDo(newToDo)
+
+    if(update){
+      updateToDo({...update,...data})
+    }else{
+      addToDo(newToDo)
+    }
 
     setValue("desc","")
     setValue("title","")
@@ -62,7 +82,7 @@ const ToDoModal = () => {
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title={"New To-Do"} subtitle={"Add your awesome new task."} />
+      <Heading title={titleLabel} subtitle={"Add your awesome new task."} />
       <Input
         id="title"
         label="Title"
@@ -89,9 +109,9 @@ const ToDoModal = () => {
     <Modal
       body={bodyContent}
       disabled={isLoading}
-      isOpen={clicked === "todo-modal"}
-      title="New To-Do"
-      actionLabel="Add it"
+      isOpen={clicked.includes("todo-modal")}
+      title={titleLabel}
+      actionLabel={actionLabel}
       onClose={closeAllClicked}
       onSubmit={handleSubmit(onSubmit)}
     />

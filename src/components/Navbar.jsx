@@ -29,7 +29,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-second-bg dark:bg-second-dark-bg w-[380px] max-w-[90vw] h-[60px] rounded-full drop-shadow-lg fixed bottom-[40px] right-[50%] translate-x-[50%] flex items-center justify-evenly">
+    <div className="z-20 bg-second-bg dark:bg-second-dark-bg w-[380px] max-w-[90vw] h-[60px] rounded-full drop-shadow-lg fixed bottom-[40px] right-[50%] translate-x-[50%] flex items-center justify-evenly">
       {navbarItems.map((item) => (
         <Tooltip key={item.label} title={item.label} arrow>
           <button

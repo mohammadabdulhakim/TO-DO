@@ -22,7 +22,8 @@ const useStore = add((set) => ({
         set((state) => ({
             toDos: state.toDos.filter((todo) => {
                 if (todo.id === updatedOne.id) {
-                    todo = updatedOne;
+                    todo.title = updatedOne.title;
+                    todo.desc = updatedOne.desc;
                 }
                 return todo;
             }),
@@ -31,7 +32,13 @@ const useStore = add((set) => ({
         set((state) => ({
             toDos: state.toDos.filter((todo) => {
                 if (todo.id === id) {
-                    todo.checked = true;
+                    if(todo.checked){
+                        todo.checked = false;
+                        todo.finishedAt = null;
+                    }else{
+                        todo.checked = true;
+                        todo.finishedAt = Date.now();
+                    }
                 }
                 return todo;
             }),
@@ -41,7 +48,11 @@ const useStore = add((set) => ({
         set((state) => ({
             toDos: state.toDos.filter((todo) => {
                 if (todo.id === id) {
-                    todo.archivedAt = Date.now();
+                    if(todo.archivedAt){
+                        todo.archivedAt = null;
+                    }else{
+                        todo.archivedAt = Date.now();
+                    }
                 }
                 return todo;
             }),

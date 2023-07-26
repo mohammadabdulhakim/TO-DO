@@ -6,6 +6,18 @@
   font-family: 'Roboto', sans-serif;
 }
 
+::-webkit-scrollbar{
+  background-color: #e6e6e6;
+  width: 8px;
+  border-radius: 100px;
+  height: 0;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #b8b8b8;
+  border-radius: 100px;
+}
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
