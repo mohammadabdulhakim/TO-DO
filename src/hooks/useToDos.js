@@ -16,6 +16,7 @@ import { create as add } from "zustand";
 
 const useStore = add((set) => ({
     toDos: [],
+    setToDos: (newToDos) => set((state) => ({ toDos: [...newToDos] })),
     addToDo: (newOne) => set((state) => ({ toDos: [...state.toDos, newOne] })),
     updateToDo: (updatedOne) =>
         set((state) => ({
