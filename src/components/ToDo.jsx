@@ -41,13 +41,13 @@ const ToDo = ({ todo }) => {
           </span>
         </div>
       </div>
-      <div>
+      <div className="flex items-center justify-center md:flex-row flex-col">
           <IconButton onClick={() => handleUpdate(todo.id)}>
-            <FiEdit />
+            <FiEdit className="dark:text-white" />
           </IconButton>
         {!todo.checked && (
           <IconButton onClick={() => archiveToDo(todo.id)}>
-            {todo.archivedAt ? <BiArchiveOut /> : <BiArchiveIn />}
+            {todo.archivedAt ? <BiArchiveOut className="dark:text-white" /> : <BiArchiveIn className="dark:text-white" />}
           </IconButton>
         )}
         <IconButton
@@ -55,7 +55,7 @@ const ToDo = ({ todo }) => {
           color="error"
           onClick={() => deleteToDo(todo.id)}
         >
-          <AiOutlineDelete />
+          <AiOutlineDelete  />
         </IconButton>
       </div>
     </div>

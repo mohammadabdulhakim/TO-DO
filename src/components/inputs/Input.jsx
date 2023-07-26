@@ -15,10 +15,10 @@ errors,
     className="w-full relative"
     >
         <input type={type} id={id} disabled={disabled} required {...register(id)} placeholder=" " className={`
-        bg-secondary-bg dark:bg-secondary-dark-bg
+        bg-second-bg dark:bg-second-dark-bg
         peer w-full p-3 pt-6 font-normal border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed pl-4 
         ${errors[id]? "border-rose-500":"border-neutral-300"}
-        ${errors[id]? "focus:border-rose-500":"focus:border-black"}
+        ${errors[id]? "focus:border-rose-500":"focus:border-neutral-400"}
         `} />
 
         <label className={`

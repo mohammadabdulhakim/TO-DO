@@ -68,6 +68,7 @@ const ToDoModal = () => {
 
     setValue("desc","")
     setValue("title","")
+    setUpdate(null)
     closeAllClicked()
     setIsLoading(false)
 };
