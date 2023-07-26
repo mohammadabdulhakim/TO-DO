@@ -1,4 +1,5 @@
 import './App.css';
+import Navbar from './components/Navbar';
 import useDarkMode from './hooks/useDarkMode';
 
 function App() {
@@ -6,8 +7,8 @@ function App() {
 
   return (
     <div className={`${isDark? "dark":"light"}`}>
-      <div className="bg-main-bg dark:bg-main-dark-bg h-screen w-screen">
-        
+      <div className="bg-main-bg dark:bg-main-dark-bg text-slate-900 dark:text-slate-100 h-screen w-screen">
+        <Navbar />
       </div>
     </div>
   );

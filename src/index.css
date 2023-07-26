@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   letter-spacing: 0.1em;
+  transition: all 150ms ease-in-out;
   font-family: 'Roboto', sans-serif;
 }
 
