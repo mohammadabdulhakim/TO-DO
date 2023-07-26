@@ -9,8 +9,8 @@ import { create as add } from "zustand";
 *    description: "using mui, tailwindCSS...",
 *    writtenAt: "1690395123480",
 *    checked: false,  //? default is false
-*    finishedAt: null,
-*    archivedAt: null
+*    finishedAt: null, //? default is null
+*    archivedAt: null //? default is null
 }
 */
 
