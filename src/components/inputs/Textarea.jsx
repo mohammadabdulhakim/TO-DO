@@ -1,5 +1,4 @@
 import { TextareaAutosize } from "@mui/material";
-import { useState } from "react";
 
 
 const Textarea= ({
@@ -10,7 +9,6 @@ formatPrice,
 register,
 errors,
 }) => {
-  const [showPassword, setShowPassword] = useState(false)
 
   
   return (
