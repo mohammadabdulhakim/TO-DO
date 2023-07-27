@@ -5,27 +5,45 @@ import Heading from "../components/Heading";
 import moment from "moment";
 
 const Weather = () => {
-  const API_KEY = "7ced31d9fe5384d82f0bb9c9bfaf0790";
+  const [location, setLocation] = useState({});
   const [weatherData, setWeatherData] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchWeatherData = async () => {
       try {
-        const CITY = "Cairo";
-        const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${CITY}&appid=${API_KEY}&units=metric`;
+        const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+        const position = await getPosition();
+        const { latitude, longitude } = position.coords;
+        const locationData = await getLocationData(latitude, longitude);
+        const city = locationData.state;
+        const country = locationData.country;
+        setLocation({city,country});
 
+        const API_URL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`;
         const response = await axios.get(API_URL);
-        const weatherData = response.data.list.filter((item) =>
-          item.dt_txt.includes("12:00:00")
-        );
+        const weatherData = response.data.list.filter(item => item.dt_txt.includes('12:00:00'));
         setWeatherData(weatherData);
       } catch (error) {
         console.log(error);
       }
     };
 
-    fetchData();
+    fetchWeatherData();
   }, []);
+
+  const getPosition = () => {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+  };
+
+  const getLocationData = async (latitude, longitude) => {
+    const API_KEY = process.env.REACT_APP_LOCATION_API_KEY;
+    const API_URL = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${API_KEY}`;
+    const response = await axios.get(API_URL);
+    const locationData = response.data.results[0].components;
+    return locationData;
+  };
 
   const getIconUrl = (iconCode) => {
     return `http://openweathermap.org/img/w/${iconCode}.png`;
@@ -35,7 +53,7 @@ const Weather = () => {
     <div className="p-10 flex flex-col items-center justify-center gap-4 pb-20 overflow-x-hidden">
       <Heading
         title={"إن شاء الله سبحانه وتعالى"}
-        subtitle={"Probable weather In next 5 days."}
+        subtitle={`Probable weather in the next 5 days in ${location?.city}, ${location?.country}.`}
         center
         ar
       />
