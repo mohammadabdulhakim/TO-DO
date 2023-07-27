@@ -37,6 +37,7 @@ const Weather = () => {
         title={"إن شاء الله سبحانه وتعالى"}
         subtitle={"Probable weather In next 5 days."}
         center
+        ar
       />
       {weatherData.map((item) => (
         <div

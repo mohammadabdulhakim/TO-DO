@@ -1,3 +1,7 @@
 button:active{
     scale: 0.96;
 }
+
+.font_ar{
+    font-family: 'Noto Kufi Arabic', sans-serif;
+}
