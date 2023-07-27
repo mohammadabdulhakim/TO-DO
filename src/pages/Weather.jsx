@@ -53,7 +53,7 @@ const Weather = () => {
     <div className="p-10 flex flex-col items-center justify-center gap-4 pb-20 overflow-x-hidden">
       <Heading
         title={"إن شاء الله سبحانه وتعالى"}
-        subtitle={`Probable weather in the next 5 days in ${location?.city}, ${location?.country}.`}
+        subtitle={`Probable weather in the next 5 days ${location.city? `in ${location?.city}, ${location?.country}`:"" }.`}
         center
         ar
       />
