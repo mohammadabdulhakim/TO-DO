@@ -39,7 +39,7 @@ const ToDo = ({ todo }) => {
           />
           <div className="flex flex-col w-full cursor-pointer" onClick={handleUpdate}>
             <span>{abbText(todo.title, 14)}</span>
-            <span className="text-neutral-500 dark:text-neutral-300 font-light text-[14px] ml-1.5">
+            <span className="sub_text">
               {abbText(todo.desc, 18)}
             </span>
           </div>

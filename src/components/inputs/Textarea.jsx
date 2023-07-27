@@ -15,7 +15,7 @@ errors,
     <div
     className="w-full relative"
     >
-        <TextareaAutosize minRows={6} id={id} disabled={disabled} required {...register(id)} placeholder=" " className={`
+        <TextareaAutosize minRows={5} maxRows={9} id={id} disabled={disabled} required {...register(id)} placeholder=" " className={`
         resize-none
         bg-second-bg dark:bg-second-dark-bg
         peer w-full p-4 pt-6 font-normal border-none rounded-md outline-none focus:outline-none transition disabled:opacity-70 disabled:cursor-not-allowed pl-4 

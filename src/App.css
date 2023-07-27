@@ -5,3 +5,7 @@ button:active{
 .font_ar{
     font-family: 'Noto Kufi Arabic', sans-serif;
 }
+
+.sub_text{
+    @apply text-neutral-500 dark:text-neutral-300 font-light text-[15px] ml-1.5
+}
