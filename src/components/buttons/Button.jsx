@@ -24,6 +24,7 @@ const Button = ({
       style={isLoading?{width:"fit-content",borderRadius:"9999px",margin:"auto"}:{}}
       className=
       {`
+      text-white
         text-center
         opacity-90
         hover:opacity-100
