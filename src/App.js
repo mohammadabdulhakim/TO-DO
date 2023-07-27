@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className={`${isDark? "dark":"light"}`}>
-      <div className="bg-main-bg dark:bg-main-dark-bg text-slate-900 dark:text-slate-100 h-screen w-screen">
+      <div className="bg-main-bg dark:bg-main-dark-bg text-slate-900 dark:text-slate-100 min-h-screen w-screen">
         <Navbar />
         <Routes>
           <Route path='/' element={<ToDoPage/>} />
