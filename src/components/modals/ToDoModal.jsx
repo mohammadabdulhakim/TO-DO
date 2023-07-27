@@ -55,7 +55,7 @@ const ToDoModal = () => {
     setUpdate(currentToDo);
     setValue("title", currentToDo.title);
     setValue("desc", currentToDo.desc);
-  }, [clicked]);
+  }, [clicked,reset,setValue]);
 
   const onSubmit = (data) => {
     setIsLoading(true);
