@@ -110,6 +110,8 @@ const ToDoModal = () => {
         required
       />
       {update && (
+        <>
+        <hr className="border-gray-500" />
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-1.5">
           <div>
             <span>Written At:</span>
@@ -134,6 +136,7 @@ const ToDoModal = () => {
             </div>
           )}
         </div>
+        </>
       )}
     </div>
   );
